@@ -14,12 +14,12 @@ public class Biblioteca {
         //VERIFICAR SI EL ISBN YA existe
         for (Libro libro1 : libros) {
             if(libro1.getISBN().equals(libro.getISBN())){
-                throw new ISBNDuplicadoException("Error el ISBN " +
+                throw new ISBNDupli("Error el ISBN " +
                         libro.getISBN() + " ya existe.");
             }
         }
         libros.add(libro); //agrega
-        totalLibros += libro.getNumeroEjemplares();       
+        totalLibros += libro.Ejemplares();       
     }
     public static int obtenerTotalLibros(){
         return totalLibros;
@@ -27,7 +27,7 @@ public class Biblioteca {
     public static void eliminarLibro(String isbn){
         for (Libro libro : libros) {
             if(libro.getISBN().equals(isbn)){
-                totalLibros -=libro.getNumeroEjemplares();
+                totalLibros -=libro.Ejemplares();
                 libros.remove(libro); //elimina
                 break;
             }
